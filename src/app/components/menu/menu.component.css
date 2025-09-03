@@ -1,0 +1,107 @@
+:root {
+  --primary: #dc2626; /* vermelho */
+  --text: #fff;
+  --bg: #111;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  background-color: blue;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* menu padrão */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.5rem 0.8rem;
+  display: block;
+  transition: background 0.3s;
+}
+
+.menu a:hover {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+/* submenu */
+.submenu ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 150px;
+}
+
+.submenu:hover ul {
+  display: block;
+}
+
+.submenu ul li a {
+  padding: 0.6rem;
+}
+
+/* toggle mobile */
+#menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  font-size: 1.8rem;
+  color: var(--text);
+  cursor: pointer;
+  display: none;
+}
+
+/* responsivo */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    background: var(--bg);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    display: none;
+  }
+
+  #menu-toggle:checked + .menu-icon + .menu {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}

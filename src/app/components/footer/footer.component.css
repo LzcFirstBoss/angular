@@ -1,0 +1,74 @@
+/* === FOOTER === */
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 2rem 0 1rem;
+  margin-top: 2rem;
+}
+
+.footer .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  width: 90%;
+  margin: auto;
+}
+
+.footer-col h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.footer-col p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-col ul li a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--primary);
+}
+
+/* Redes sociais */
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.social-links a {
+  color: #fff;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--primary);
+}
+
+/* Footer inferior */
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #222;
+  font-size: 0.85rem;
+  color: #bbb;
+}
