@@ -1,37 +1,27 @@
 <section class="noticias">
-    <h1>Últimas Notícias</h1>
-    <div class="noticias-container">
-      <div class="noticia-card">
-        <img src="https://picsum.photos/id/1025/350/220" alt="Notícia 1" />
-        <div class="noticia-conteudo">
-          <h3>Notícia 1</h3>
-          <p>
-            Resumo rápido sobre a notícia. Um pequeno texto chamativo para atrair o leitor.
-          </p>
-          <a href="#">Leia mais →</a>
-        </div>
-      </div>
+  <h1>Últimas Notícias</h1>
+  <div class="noticias-container">
+    <!-- Loop Angular -->
+    <div class="noticia-card" *ngFor="let noticia of noticias">
+      <img [src]="noticia.imagem" [alt]="noticia.titulo" />
 
-      <div class="noticia-card">
-        <img src="https://picsum.photos/id/1035/350/220" alt="Notícia 2" />
-        <div class="noticia-conteudo">
-          <h3>Notícia 2</h3>
-          <p>
-            Resumo rápido sobre a notícia. Um pequeno texto chamativo para atrair o leitor.
-          </p>
-          <a href="#">Leia mais →</a>
-        </div>
-      </div>
-
-      <div class="noticia-card">
-        <img src="https://picsum.photos/id/1045/350/220" alt="Notícia 3" />
-        <div class="noticia-conteudo">
-          <h3>Notícia 3</h3>
-          <p>
-            Resumo rápido sobre a notícia. Um pequeno texto chamativo para atrair o leitor.
-          </p>
-          <a href="#">Leia mais →</a>
-        </div>
+      <div class="noticia-conteudo">
+        <h3>{{ noticia.titulo }}</h3>
+        <p>{{ noticia.resumo }}</p>
+        <a href="#" (click)="abrirNoticia(noticia); $event.preventDefault()">
+          Leia mais →
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Modal de notícia completa -->
+<div class="modal" *ngIf="noticiaAberta" (click)="fecharModal()">
+  <div class="modal-box" (click)="$event.stopPropagation()">
+    <span class="close" (click)="fecharModal()">&times;</span>
+    <h2>{{ noticiaAberta.titulo }}</h2>
+    <img [src]="noticiaAberta.imagem" [alt]="noticiaAberta.titulo" />
+    <p>{{ noticiaAberta.conteudo }}</p>
+  </div>
+</div>

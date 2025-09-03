@@ -1,9 +1,3 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
-}
-
 .noticias {
   max-width: 1200px;
   margin: 0 auto;
@@ -33,6 +27,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s;
+  cursor: pointer;
 }
 
 .noticia-card:hover {
@@ -69,4 +64,59 @@ body {
 
 .noticia-conteudo a:hover {
   color: #b91c1c;
+}
+
+/* Modal */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 1.5rem;
+  max-width: 700px;
+  width: 90%;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  animation: zoom 0.3s ease;
+}
+
+.modal-box img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.modal-box p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+@keyframes zoom {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Botão fechar */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: #dc2626;
 }

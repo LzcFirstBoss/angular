@@ -1,28 +1,14 @@
 <section class="produtos">
-    <h1>Nossos Produtos</h1>
-    <div class="produtos-container">
-      <div class="produto-card">
-        <img src="https://picsum.photos/id/1011/300/200" alt="Produto 1" />
-        <h3>Produto 1</h3>
-        <p>Descrição curta do produto, com detalhes importantes.</p>
-        <span class="preco">R$ 199,90</span>
-        <button>Comprar</button>
-      </div>
+  <h1>Nossos Produtos</h1>
 
-      <div class="produto-card">
-        <img src="https://picsum.photos/id/1012/300/200" alt="Produto 2" />
-        <h3>Produto 2</h3>
-        <p>Descrição curta do produto, com detalhes importantes.</p>
-        <span class="preco">R$ 299,90</span>
-        <button>Comprar</button>
-      </div>
-
-      <div class="produto-card">
-        <img src="https://picsum.photos/id/1013/300/200" alt="Produto 3" />
-        <h3>Produto 3</h3>
-        <p>Descrição curta do produto, com detalhes importantes.</p>
-        <span class="preco">R$ 399,90</span>
-        <button>Comprar</button>
-      </div>
+  <div class="produtos-container">
+    <!-- Loop nos produtos com Angular -->
+    <div class="produto-card" *ngFor="let produto of produtos">
+      <img [src]="produto.imagem" [alt]="produto.nome" />
+      <h3>{{ produto.nome }}</h3>
+      <p>{{ produto.descricao }}</p>
+      <span class="preco">{{ produto.preco | currency:'BRL' }}</span>
+      <button (click)="comprar(produto)">Comprar</button>
     </div>
-  </section>
+  </div>
+</section>

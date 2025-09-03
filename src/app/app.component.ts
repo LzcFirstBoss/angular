@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent  } from './components/header/header.component';
-import { FooterComponent  } from './components/footer/footer.component';
-import { MenuComponent  } from './components/menu/menu.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MenuComponent } from './components/menu/menu.component';
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { ListaComponent } from './components/lista/lista.component';
-
-
+import { NoticiaComponent } from './components/noticia/noticia.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet , HeaderComponent, FooterComponent, MenuComponent, GaleriaComponent, ListaComponent],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    MenuComponent,
+    GaleriaComponent,
+    ListaComponent,
+    NoticiaComponent
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'] // ✅ CORRETO
 })
 export class AppComponent {
   title = 'projeto';

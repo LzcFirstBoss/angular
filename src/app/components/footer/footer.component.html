@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Coluna 1 -->
     <div class="footer-col">
-      <h4>MinhaMarca</h4>
+      <h4>{{ marca }}</h4>
       <p>Soluções digitais personalizadas para alavancar o seu negócio.</p>
     </div>
 
@@ -10,10 +10,9 @@
     <div class="footer-col">
       <h4>Links Rápidos</h4>
       <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Serviços</a></li>
-        <li><a href="#">Contato</a></li>
+        <li *ngFor="let link of linksRapidos">
+          <a [href]="link.url">{{ link.nome }}</a>
+        </li>
       </ul>
     </div>
 
@@ -21,10 +20,9 @@
     <div class="footer-col">
       <h4>Redes Sociais</h4>
       <div class="social-links">
-        <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="#"><i class="bi bi-instagram"></i></a>
-        <a href="#"><i class="bi bi-linkedin"></i></a>
-        <a href="#"><i class="bi bi-whatsapp"></i></a>
+        <a *ngFor="let rede of redesSociais" [href]="rede.url" target="_blank">
+          <i class="bi" [ngClass]="rede.icone"></i>
+        </a>
       </div>
     </div>
 
@@ -32,15 +30,15 @@
     <div class="footer-col">
       <h4>Contato</h4>
       <ul>
-        <li><i class="bi bi-telephone"></i> (11) 99999-9999</li>
-        <li><i class="bi bi-envelope"></i> contato.com</li>
-        <li><i class="bi bi-geo-alt"></i> Rua Exemplo, 123 - São Paulo</li>
+        <li *ngFor="let contato of contatos">
+          <i class="bi" [ngClass]="contato.icone"></i> {{ contato.valor }}
+        </li>
       </ul>
     </div>
   </div>
 
   <!-- Direitos autorais -->
   <div class="footer-bottom">
-    <p> 2025 MinhaMarca. Todos os direitos reservados.</p>
+    <p>&copy; {{ anoAtual }} {{ marca }}. Todos os direitos reservados.</p>
   </div>
 </footer>

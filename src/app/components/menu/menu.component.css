@@ -4,12 +4,18 @@
   --bg: #111;
 }
 
+/* ===== RESET / BASE ===== */
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
   background: #f9f9f9;
 }
 
+/* ===== NAVBAR ===== */
 .navbar {
   display: flex;
   align-items: center;
@@ -17,7 +23,6 @@ body {
   background: var(--bg);
   padding: 0.8rem 1.2rem;
   position: relative;
-  background-color: blue;
 }
 
 .logo {
@@ -44,33 +49,36 @@ body {
   color: var(--text);
   padding: 0.5rem 0.8rem;
   display: block;
-  transition: background 0.3s;
+  transition: background 0.25s ease;
 }
 
 .menu a:hover {
   background: var(--primary);
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 /* submenu */
-.submenu ul {
+.submenu > ul {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
   background: var(--bg);
   list-style: none;
-  padding: 0;
+  padding: 6px 0;
   margin: 0;
-  min-width: 150px;
+  min-width: 160px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  z-index: 20;
 }
 
-.submenu:hover ul {
+.submenu:hover > ul {
   display: block;
 }
 
 .submenu ul li a {
-  padding: 0.6rem;
+  padding: 0.6rem 0.9rem;
 }
 
 /* toggle mobile */
@@ -82,10 +90,11 @@ body {
   font-size: 1.8rem;
   color: var(--text);
   cursor: pointer;
-  display: none;
+  display: none; /* só aparece no mobile */
+  user-select: none;
 }
 
-/* responsivo */
+/* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
   .menu {
     flex-direction: column;
@@ -93,15 +102,89 @@ body {
     position: absolute;
     top: 100%;
     right: 0;
-    width: 200px;
+    width: min(260px, 90vw);
     display: none;
+    padding: 0.6rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
   }
 
-  #menu-toggle:checked + .menu-icon + .menu {
+  /* classe controlada pelo TS para abrir no mobile */
+  .menu.aberto {
     display: flex;
   }
 
   .menu-icon {
     display: block;
   }
+
+  /* Submenu em coluna no mobile */
+  .submenu > ul {
+    position: static;
+    border: none;
+    background: transparent;
+    padding: 0 0 0 8px;
+  }
+
+  .submenu:hover > ul {
+    display: block; /* continua visível quando tocar */
+  }
+}
+
+/* ===== CONTROLES / DEMO DE BINDINGS ===== */
+.config {
+  background: #fff;
+  margin: 16px auto;
+  padding: 16px;
+  border-radius: 10px;
+  max-width: 820px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+.config h2 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #111;
+}
+
+.controle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.controle input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  min-width: 260px;
+}
+
+.controle button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: filter .2s ease;
+}
+
+.controle button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.controle button:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.status {
+  margin-top: 10px;
+  color: #374151;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
 }

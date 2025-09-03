@@ -1,22 +1,57 @@
 <header>
-    <nav class="navbar">
-      <div class="logo">MinhaMarca</div>
+  <!-- Navbar com property binding de cor -->
+  <nav class="navbar" [style.backgroundColor]="corMenu">
+    <!-- Interpolação do título -->
+    <div class="logo">{{ titulo }}</div>
 
-      <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <!-- Toggle Mobile (checkbox) -->
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle"
+           class="menu-icon"
+           (click)="toggleMobile()"
+           title="Abrir/fechar menu">
+      &#9776;
+    </label>
 
-      <ul class="menu">
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li class="submenu">
-          <a href="#">Serviços ▾</a>
-          <ul>
-            <li><a href="#">Consultoria</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Desenvolvimento</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Menu principal -->
+    <ul class="menu" [class.aberto]="menuAbertoMobile">
+      <li><a href="#" (click)="selecionarItem('Início')">Início</a></li>
+      <li><a href="#" (click)="selecionarItem('Sobre')">Sobre</a></li>
+
+      <li class="submenu">
+        <a href="#" (click)="selecionarItem('Serviços')">Serviços ▾</a>
+        <ul>
+          <li><a href="#" (click)="selecionarItem('Consultoria')">Consultoria</a></li>
+          <li><a href="#" (click)="selecionarItem('Marketing')">Marketing</a></li>
+          <li><a href="#" (click)="selecionarItem('Desenvolvimento')">Desenvolvimento</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#" (click)="selecionarItem('Contato')">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Painel de controles (demonstração de bindings) -->
+<section class="config">
+  <h2>Configurações do Menu</h2>
+
+  <div class="controle">
+    <label for="cor">Cor do menu:</label>
+    <input id="cor"
+           type="text"
+           placeholder="Ex: blue, #dc2626, rgb(0,0,0)"
+           [(ngModel)]="corDigitada"
+           (keyup.enter)="mudarCorMenu()" />
+    <button (click)="mudarCorMenu()"
+            [disabled]="!corDigitada?.trim()">
+      Aplicar cor
+    </button>
+  </div>
+
+  <p class="status">
+    <span>Cor atual: <strong>{{ corMenu }}</strong></span>
+    <span>•</span>
+    <span>Último item: <strong>{{ itemSelecionado || 'Nenhum' }}</strong></span>
+  </p>
+</section>

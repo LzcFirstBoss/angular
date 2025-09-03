@@ -1,17 +1,4 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
-  color: #333;
-}
-
-/* Container principal da galeria */
+/* ======= Galeria ======= */
 .gallery {
   max-width: 1200px;
   margin: 0 auto;
@@ -19,21 +6,20 @@ body {
   text-align: center;
 }
 
-/* Título */
 .gallery h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: #dc2626;
 }
 
-/* Grade da galeria */
+/* Container da galeria */
 .gallery-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 15px;
 }
 
-/* Cada item da galeria */
+/* Item da galeria */
 .gallery-item {
   position: relative;
   overflow: hidden;
@@ -41,6 +27,10 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
 }
 
 .gallery-item img {
@@ -51,8 +41,47 @@ body {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Efeito hover */
-.gallery-item:hover img {
-  transform: scale(1.1);
-  filter: brightness(80%);
+/* ======= Modal (imagem expandida) ======= */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 30px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  cursor: zoom-out;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: zoom 0.3s ease;
+}
+
+@keyframes zoom {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Botão de fechar */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #dc2626;
 }
